@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Yeshwanth S A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f172a;
+            color: #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 20% 80%, rgba(219, 39, 119, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .thank-you-container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .thank-you-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(96, 165, 250, 0.1),
+                rgba(147, 51, 234, 0.1)
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .thank-you-container:hover::before {
+            opacity: 1;
+        }
+
+        .check-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #60a5fa, #9333ea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: scaleIn 0.5s ease-out 0.2s both;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .check-icon::before {
+            content: '✓';
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #60a5fa, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 0.5s ease-out 0.4s both;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            animation: slideIn 0.5s ease-out 0.6s both;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(to right, #60a5fa, #9333ea);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out 0.8s both;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(96, 165, 250, 0.5);
+        }
+
+        @media (max-width: 640px) {
+            .thank-you-container {
+                width: 85%;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="check-icon"></div>
+        <h1>Thank You!</h1>
+        <p>Your message has been successfully sent. I'll get back to you as soon as possible.</p>
+        <a href="index.html" class="back-button">Return to Homepage</a>
+    </div>
+</body>
+</html> 
