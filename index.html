@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeshwanth S A - Product Analyst Portfolio</title>
     <meta name="description" content="Product Analyst based in Bengaluru, specializing in data-driven insights and product analytics.">
+    <link href="css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Dark Theme Base Styles */
@@ -1177,17 +1178,18 @@
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <div class="section-container">
-            <h2 class="section-title">About Me</h2>
-            <div class="section-divider"></div>
-            <div class="about-grid">
-                <div class="about-image-container">
-                    <img src="image.jpg" alt="Yeshwanth S A" class="about-image">
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <img src="image.jpg" alt="Yeshwanth S A" class="rounded-lg shadow-lg">
                 </div>
-                <div class="about-text">
-                    <p>As a highly motivated professional with substantial experience in product management, I excel at collaborating with cross-functional teams to deliver results that exceed expectations. Proficient in Agile methodologies, data analysis, and customer engagement.</p>
-                    <p>My expertise spans the entire product lifecycle, from inception to delivery, combined with strong creative and organizational skills. I am excited to take on new challenges and contribute to the organization's overall success.</p>
+                <div>
+                    <p class="text-lg mb-4">
+                        Product Analyst with expertise in data analysis and visualization. Passionate about turning data into actionable insights.
+                    </p>
+                    <!-- Add more about content -->
                 </div>
             </div>
         </div>
@@ -1296,189 +1298,30 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="section-divider"></div>
-            <form class="contact-form" id="contactForm" action="https://formsubmit.co/yeshusa13@gmail.com" method="POST" onsubmit="return validateForm(event)">
-                <!-- Honeypot -->
-                <input type="text" name="_honey" style="display: none;">
-                <!-- Disable Captcha -->
-                <input type="hidden" name="_captcha" value="false">
-                <!-- Success Page -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
+            <form action="https://formsubmit.co/yeshusa13@gmail.com" method="POST" class="contact-form">
                 <input type="hidden" name="_next" value="thank-you.html">
+                <input type="hidden" name="_captcha" value="false">
+                
                 <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" id="name" name="name" class="form-input" required pattern="[A-Za-z ]{2,50}" title="Please enter a valid name (2-50 characters, letters only)">
-                    <span class="error-message"></span>
+                    <input type="text" name="name" placeholder="Your Name" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-input" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
-                    <span class="error-message"></span>
+                    <input type="email" name="email" placeholder="Your Email" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" pattern="[\+]?[0-9]{10,14}" title="Please enter a valid phone number (10-14 digits)">
-                    <span class="error-message"></span>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" class="form-textarea" required minlength="10" maxlength="1000" title="Message must be between 10 and 1000 characters"></textarea>
-                    <span class="error-message"></span>
-                </div>
-                <button type="submit" class="submit-button">
-                    <span class="button-text">Send Message</span>
-                    <span class="button-loader" style="display: none;">Sending...</span>
-                </button>
+                
+                <button type="submit">Send Message</button>
             </form>
         </div>
     </section>
 
-    <script>
-        function validateForm(event) {
-            const form = document.getElementById('contactForm');
-            const inputs = form.querySelectorAll('input[required], textarea[required]');
-            let isValid = true;
-
-            // Reset previous error states
-            form.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
-            form.querySelectorAll('.form-input, .form-textarea').forEach(input => input.classList.remove('error'));
-
-            // Validate each required field
-            inputs.forEach(input => {
-                if (!input.checkValidity()) {
-                    isValid = false;
-                    input.classList.add('error');
-                    const errorMessage = input.nextElementSibling;
-                    errorMessage.textContent = input.title || 'This field is required';
-                    errorMessage.style.display = 'block';
-                }
-            });
-
-            // Phone validation (optional field)
-            const phone = document.getElementById('phone');
-            if (phone.value && !phone.checkValidity()) {
-                isValid = false;
-                phone.classList.add('error');
-                const errorMessage = phone.nextElementSibling;
-                errorMessage.textContent = phone.title;
-                errorMessage.style.display = 'block';
-            }
-
-            if (!isValid) {
-                event.preventDefault();
-                return false;
-            }
-
-            // Show loading state
-            const submitButton = form.querySelector('.submit-button');
-            const buttonText = submitButton.querySelector('.button-text');
-            const buttonLoader = submitButton.querySelector('.button-loader');
-            
-            buttonText.style.display = 'none';
-            buttonLoader.style.display = 'inline-block';
-            submitButton.disabled = true;
-
-            return true;
-        }
-
-        // Real-time validation
-        document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
-            input.addEventListener('input', function() {
-                if (this.checkValidity()) {
-                    this.classList.remove('error');
-                    this.nextElementSibling.style.display = 'none';
-                }
-            });
-        });
-
-        // Star animation script
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const numberOfStars = 100;
-            
-            for (let i = 0; i < numberOfStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Random position
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                
-                // Random duration between 3-7 seconds
-                const duration = 3 + Math.random() * 4;
-                star.style.setProperty('--duration', `${duration}s`);
-                
-                // Random delay
-                star.style.animationDelay = `${Math.random() * duration}s`;
-                
-                starsContainer.appendChild(star);
-            }
-        }
-
-        // Interactive star hover effects
-        function createCursorTrail() {
-            const cursorTrail = document.getElementById('cursorTrail');
-            const heroSection = document.getElementById('home');
-            const maxStars = 20;
-            const stars = [];
-            let mouseX = 0;
-            let mouseY = 0;
-
-            // Create initial stars for cursor trail
-            for (let i = 0; i < maxStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'cursor-star';
-                star.style.opacity = 0;
-                cursorTrail.appendChild(star);
-                stars.push({
-                    element: star,
-                    x: 0,
-                    y: 0,
-                    scale: Math.random() * 0.5 + 0.5
-                });
-            }
-
-            // Update star positions
-            function updateStars() {
-                stars.forEach((star, index) => {
-                    const lag = (index + 1) * 0.1;
-                    star.x += (mouseX - star.x) * lag;
-                    star.y += (mouseY - star.y) * lag;
-                    star.element.style.transform = `translate(${star.x}px, ${star.y}px) scale(${star.scale})`;
-                    star.element.style.opacity = 1 - (index / maxStars);
-                });
-                requestAnimationFrame(updateStars);
-            }
-
-            // Track mouse movement
-            heroSection.addEventListener('mousemove', (e) => {
-                const rect = heroSection.getBoundingClientRect();
-                mouseX = e.clientX - rect.left;
-                mouseY = e.clientY - rect.top;
-            });
-
-            // Start animation
-            updateStars();
-
-            // Add hover effect to background stars
-            const backgroundStars = document.querySelectorAll('.star');
-            backgroundStars.forEach(star => {
-                star.addEventListener('mouseenter', () => {
-                    star.classList.add('glow');
-                });
-                star.addEventListener('mouseleave', () => {
-                    star.classList.remove('glow');
-                });
-            });
-        }
-
-        // Initialize stars and cursor trail on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            createStars();
-            createCursorTrail();
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html> 
